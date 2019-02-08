@@ -1,0 +1,56 @@
+{
+    "ImageId": "ami",
+    "InstanceType": "type",
+    "KeyName": "my_key",
+    "MaxCount": 1,
+        "MinCount": 1,
+        "Monitoring": {
+            "Enabled": false
+        },
+        "DryRun": false,
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/sda1",
+                "Ebs": {
+                    "VolumeSize": 0
+                }
+            }
+        ],
+        "Placement": {
+            "AvailabilityZone": "",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "IamInstanceProfile": {
+            "Name": "instance_profile_name"
+        },
+        "NetworkInterfaces": [
+            {
+                "AssociatePublicIpAddress": true,
+                "DeleteOnTermination": true,
+                "DeviceIndex": 0,
+                "Groups": [
+                    "sgroup"
+                ]
+            }
+        ],
+        "TagSpecifications": [
+            {
+                "ResourceType": "instance",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "master"
+                    },
+                    {
+                        "Key": "tag-name",
+                        "Value": "tag-value"
+                    }
+                ]
+            }
+        ],
+        "CpuOptions": {
+            "CoreCount": ,
+            "ThreadsPerCore": 1
+        }
+    }

@@ -1,0 +1,45 @@
+{
+    "ImageId": "ami",
+    "InstanceType": "type",
+    "KeyName": "my_key",
+    "MaxCount": ,
+    "MinCount": ,
+    "Monitoring": {
+        "Enabled": false
+    },
+    "DryRun": false,
+    "Placement": {
+        "AvailabilityZone": "",
+        "GroupName": "",
+        "Tenancy": "default"
+    },
+    "NetworkInterfaces": [
+        {
+            "AssociatePublicIpAddress": false,
+            "DeleteOnTermination": true,
+            "DeviceIndex": 0,
+            "Groups": [
+                "sgroup"
+            ]
+        }
+    ],
+    "TagSpecifications": [
+        {
+            "ResourceType": "instance",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "node"
+                },
+                {
+                    "Key": "tag-name",
+                    "Value": "tag-value"
+                }
+            ]
+        }
+    ],
+    "CpuOptions": {
+        "CoreCount": ,
+        "ThreadsPerCore": 1
+    }
+}
