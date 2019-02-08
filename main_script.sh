@@ -24,6 +24,7 @@ master_config=./files/master.json
 node_config=./files/node.json
 temp_dir=./temp/
 analysis_dir=./analysis/
+trust_file=./iam_policy_document.json
 
 
 
@@ -98,14 +99,14 @@ if [ $(aws iam list-roles --query Roles[*].RoleName | grep -w $IAM_role_name -c)
     aws iam delete-role --role-name $IAM_role_name
 fi
 
-aws iam create-role --role-name $IAM_role_name --assume-role-policy-document file://$EC2trustFile
+aws iam create-role --role-name $IAM_role_name --assume-role-policy-document file://$trust_file
 
 # edit permissions policy file to include appropriate S3 folder and edit condition for terminate instances policy
 cp $permissionsPolicyFile $tempPermissionsPolicyFile
 
 sed -i -e 's|defaultBucket|'"$S3BucketFolder"'/*|' \
-    -e 's|arn:aws:ec2:region:userID:instance|arn:aws:ec2:'$region':'$userID':instance|' \
-    -e 's|"ec2:ResourceTag/tag-name":"tag-value"|"ec2:ResourceTag/'$tag'":"'$caseName'"|' "$tempPermissionsPolicyFile"
+    -e 's|arn:aws:ec2:region:userID:instance|arn:aws:ec2:'$region':'$USER_ID':instance|' \
+    -e 's|"ec2:ResourceTag/tag-name":"tag-value"|"ec2:ResourceTag/'$tag'":"'$TITLE'"|' "$tempPermissionsPolicyFile"
 
 # attach new role policy
 aws iam put-role-policy --role-name $IAM_role_name --policy-name $iamPolicyName --policy-document file://$tempPermissionsPolicyFile

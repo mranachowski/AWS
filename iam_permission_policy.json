@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": "s3:PutObject",
+    "Resource": "arn:aws:s3:::defaultBucket"
+  },{
+    "Effect": "Allow",
+    "Action": "ec2:TerminateInstances",
+    "Resource": "arn:aws:ec2:region:userID:instance/*",
+    "Condition":{
+        "StringEquals": {
+            "ec2:ResourceTag/tag-name":"tag-value"
+        }
+    }
+  }]
+}
