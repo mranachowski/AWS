@@ -3,7 +3,7 @@
 #SECURITY CREDENTIALS
 ssh_key=~/.ssh/aws_project
 ssh_key_name="my_key"
-USER_ID="970033870840"
+USER_ID=""
 
 #name for
 TITLE="analysis"
