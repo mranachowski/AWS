@@ -167,7 +167,11 @@ $ sudo apt-get update
 $ sudo apt-get install elmerfem-csc
 \end{lstlisting}
 Great advantage of Elmer is well documentation\footnote{\url{https://www.csc.fi/web/elmer/documentation}}.
-
-
+To perform analysis in parallel mode user must execute two commands (all details are describe in Chapter 16 \hyperlink{http://www.nic.funet.fi/pub/sci/physics/elmer/doc/ElmerSolverManual.pdf}{This document}):
+\begin{lstlisting}[language=bash]
+$ ElmerGrid [option] [option] meshdirectoryname [ mesh partitioning option]
+$ mpiexec -np NUMBER_OF_PROCESSES ElmerSolver_mpi
+\end{lstlisting}
+ElmerSolver\_mpi is recompiled  solver. After excedute this command program will look for ELMERSOLVER\_STARTINFO file which holds links to file containing analysis data.
 
 \end{document}
